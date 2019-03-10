@@ -10,6 +10,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 // my module
 const Users = require ('./controller/userControll')
+const Company = require ('./controller/companyControll')
 let db = require('./dbMongo');
 
 const port = 2020;
@@ -22,6 +23,12 @@ app.get('/users', Users.find)
 app.post('/newUser', Users.insertOne)
 app.put('/userUpdate/:id', Users.updateOne)
 app.delete('/userDelete/:id', Users.deleteOne)
+
+app.get('/company', Company.find)
+app.post('/newCompany', Company.insertOne)
+app.put('/companyUpdate/:id', Company.updateOne)
+app.delete('/companyDelete/:id', Company.deleteOne)
+
 
 db.connect("mongodb://localhost:27017", (err, client)=>{
   if(err) {

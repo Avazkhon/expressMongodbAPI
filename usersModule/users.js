@@ -21,15 +21,15 @@ exports.find = function (colB){
 }
 
 exports.updateOne = function (id, apdate, colB){
-  let id =  ObjectID(id);
-  db.get().db("userDB").collection("users").updateOne({_id: id}, { $set: apdate}, (err, doc)=>{
+  let idUpgade =  ObjectID(id);
+  db.get().db("userDB").collection("users").updateOne({_id: idUpgade}, { $set: apdate}, (err, doc)=>{
     colB(err, doc)
   })
 }
 
-exports.deleteOne = function (id, apdate, colB){
-  let id =  ObjectID(id);
-  db.get().db("userDB").collection("users").deleteOne({_id: id}, (err, doc)=>{
+exports.deleteOne = function (id, colB){
+  let idUpgade =  ObjectID(id);
+  db.get().db("userDB").collection("users").deleteOne({_id: idUpgade}, (err, doc)=>{
     colB(err, doc)
   })
 }
