@@ -32,3 +32,15 @@ exports.updateOne = (req, res)=> {
 		res.send(doc)
 	})
 }
+
+exports.deleteOne = (req, res)=> {
+	let id = req.params.id;
+	let update = req.body;
+	User.deleteOne(id, (err, doc) =>{
+		if(err) {
+			console.log(err)
+			return res.sendStatus(400)
+		}
+		res.send(doc)
+	})
+}

@@ -19,19 +19,13 @@ app.get('/', (req, res)=>{
 });
 
 app.get('/users', Users.find)
-
 app.post('/newUser', Users.insertOne)
-
 app.put('/userUpdate/:id', Users.updateOne)
-
-app.delete('/userDelete/:id', (req, res)=>{
-  console.log(req.params.id);
-  res.sendStatus(200);
-})
+app.delete('/userDelete/:id', Users.deleteOne)
 
 db.connect("mongodb://localhost:27017", (err, client)=>{
   if(err) {
-    return console.log(errr)
+    return console.log(err)
   }
   app.listen(port, ()=> {
     console.log("app starting. localhost", port);
