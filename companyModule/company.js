@@ -1,8 +1,12 @@
 let db = require('../dbMongo');
 const ObjectID = require('mongodb').ObjectID;
 
+// my module
+const ObjectCompany = require('./ObjectCompany')
+
 exports.insertOne = function (company, colB) {
-  db.get().db("companyDB").collection("company").insertOne(company, (err, doc)=> {
+  let objectCompany= new ObjectCompany(company)
+  db.get().db("companyDB").collection("company").insertOne(objectCompany, (err, doc)=> {
     console.log("new company added")
     console.log(doc.ops)
     colB(err, doc)
